@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TareaMVVM.Views.EmployesPage"
+             Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="DsStackLayout" TargetType="StackLayout">
+               
+                <Setter Property="VerticalOptions" Value="StartAndExpand"/>
+            </Style>
+
+            <Style x:Key="DsButtonFlotante" TargetType="Button">
+              
+             
+                <Setter Property="HorizontalOptions" Value="Center"/>
+             
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="WidthRequest" Value="60"/>
+            </Style>
+            <Style x:Key="entryFormStyle" TargetType="Entry">
+                <Setter Property="Margin" Value="10,0"/>
+         
+             
+                
+               
+            </Style>
+
+            <Style x:Key="frameStyle" TargetType="Frame">
+           
+                <Setter Property="Padding" Value="3"/>
+          
+                <Setter Property="VerticalOptions" Value="StartAndExpand"/>
+                <Setter Property="BorderColor" Value="#E7E4E3"/>
+                <Setter Property="Margin" Value="20,5"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="Guardar"
+            Command="{Binding SaveCommand}"
+            />
+
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>   
+      
+        <ScrollView>
+            <StackLayout Style="{StaticResource DsStackLayout}">
+             
+                <Frame Style="{StaticResource frameStyle}">
+                    <Entry Style="{StaticResource entryFormStyle}" 
+                           Keyboard="Plain" Placeholder="Nombre" Text="{Binding Nombre, Mode=TwoWay}"
+                               />
+                </Frame>
+                <Frame Style="{StaticResource frameStyle}">
+
+                    <Entry Style="{StaticResource entryFormStyle}"
+                        Keyboard="Plain" Placeholder="Apellido" Text="{Binding Apellido, Mode=TwoWay}"/>
+                </Frame>
+
+                <Frame Style="{StaticResource frameStyle}">
+                    <Entry Style="{StaticResource entryFormStyle}"
+                         Placeholder="Edad" Keyboard="Numeric" Text="{Binding Edad, Mode=TwoWay}"/>
+                </Frame>
+
+                <Frame Style="{StaticResource frameStyle}">
+                  
+                        <Entry Style="{StaticResource entryFormStyle}"
+                        Keyboard="Plain" Placeholder="Dirección" Text="{Binding Direccion, Mode=TwoWay}"/>
+               
+                </Frame>
+           
+                <Frame Style="{StaticResource frameStyle}">
+
+                    <Picker Title="{Binding TitlePicker}"
+                            FontSize="18"  ItemsSource="{Binding ListCargos}"  ItemDisplayBinding="{Binding Cargo}"
+                            SelectedItem="{Binding CargoSeleccionado, Mode=TwoWay}"
+                            FontFamily="SansLight"
+                            Margin="10,0"
+                            HorizontalOptions="FillAndExpand" />
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+        
+    </ContentPage.Content>
+
+</ContentPage>
